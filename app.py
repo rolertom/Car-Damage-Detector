@@ -9,27 +9,25 @@ st.set_page_config(page_title="Car Damage Detector", layout="wide")
 
 st.markdown("""
 <style>
-[data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #d9e4f5 0%, #ffffff 100%);
+/* Memaksa warna font judul (h1) dan sub-judul (h2) menjadi hitam */
+h1, h2 {
+    color: black !important;
 }
 
+[data-testid="stAppViewContainer"] {
+    background: linear-gradient(135deg, #0e2e4e 0%, #ffffff 100%);
+}
 [data-testid="stHeader"] {
     background: rgba(0,0,0,0);
 }
-
 [data-testid="stSidebar"] {
-    background-color: #eef3fc !important;
+    background-color: #eefffc !important;
 }
-
 .result-box {
     padding: 20px;
-    background: #ffffffcc;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    margin-top: 10px;
 }
 </style>
-""", unsafe_allow_html=True)
+""", unsafe_allow_true=True)
 
 st.markdown("<h1 class='title'>CAR DAMAGE DETECTOR</h1>", unsafe_allow_html=True)
 st.markdown("<p class='subtitle'>Upload foto mobil untuk mendeteksi kerusakan</p>", unsafe_allow_html=True)
