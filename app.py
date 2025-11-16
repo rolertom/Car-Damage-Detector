@@ -3,11 +3,10 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
 
-model = load_model("car_damage_model.keras")
+model = load_model("CarDamageDetector/car_damage_model.keras")
 
 st.set_page_config(page_title="Car Damage Detector", layout="wide")
 
-# ===== CSS =====
 st.markdown("""
 <style>
 [data-testid="stAppViewContainer"] {
@@ -32,36 +31,30 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ===== Title =====
 st.markdown("<h1 class='title'>CAR DAMAGE DETECTOR</h1>", unsafe_allow_html=True)
 st.markdown("<p class='subtitle'>Upload foto mobil untuk mendeteksi kerusakan</p>", unsafe_allow_html=True)
 
 col1, col2 = st.columns(2)
 
-# ===== Upload Image =====
 with col1:
     uploaded_file = st.file_uploader("Upload Gambar", type=["jpg", "jpeg", "png"])
 
     if uploaded_file:
         st.image(uploaded_file, caption="Gambar yang diupload", use_column_width=True)
 
-# ===== Prediction Section =====
 with col2:
     st.subheader("🔍 Hasil Prediksi")
 
     if uploaded_file is None:
         st.info("Belum ada gambar yang di-upload.")
     else:
-        # Load & Preprocess Image
         img = image.load_img(uploaded_file, target_size=(224, 224))
         img_array = image.img_to_array(img) / 255.0
         img_array = np.expand_dims(img_array, axis=0)
 
-        # Prediksi
         with st.spinner("🔎 Menganalisis gambar..."):
             pred = model.predict(img_array)[0][0]
 
-        # RESULT BOX (tidak kosong lagi)
         result_html = "<div class='result-box'>"
         
         if pred > 0.5:
