@@ -3,7 +3,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
 
-model = load_model("car_damage_model.h5")
+model = load_model("car_damage_model.keras")
 
 st.set_page_config(page_title="Car Damage Detector", layout="wide")
 
