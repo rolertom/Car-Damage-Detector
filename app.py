@@ -64,7 +64,7 @@ with col2:
             result_html += "<p style='color:red; font-weight:bold;'>❗ Kerusakan Terdeteksi</p>"
             confidence = 1 - pred
 
-        result_html += f"<p>Tingkat Keyakinan: <b>{(confidence * 100):.2f}</b></p>"
+        result_html += f"<p>Tingkat Keyakinan: <b>{(confidence * 100):.0f}%</b></p>"
         result_html += "</div>"
 
         st.markdown(result_html, unsafe_allow_html=True)
